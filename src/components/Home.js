@@ -7,15 +7,12 @@ const handleDownloadResume = () => {
   const link = document.createElement("a");
 
   // 🔥 Force GitHub Pages to load the NEW resume (prevents old cached resume)
-  link.href = process.env.PUBLIC_URL + "/resume-shrihari.pdf?v=2";
-
-  link.download = "resume-shrihari.pdf";
+  link.href = process.env.PUBLIC_URL + "/resume-shrihari-v2.pdf";
+  link.download = "resume-shrihari-v2.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
-
-
 
   return (
     <section
