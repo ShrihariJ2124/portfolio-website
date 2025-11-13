@@ -5,12 +5,16 @@ import 'aos/dist/aos.css';
 const Home = () => {
 const handleDownloadResume = () => {
   const link = document.createElement("a");
-  link.href = process.env.PUBLIC_URL + "/resume-shrihari.pdf";
+
+  // 🔥 Force GitHub Pages to load the NEW resume (prevents old cached resume)
+  link.href = process.env.PUBLIC_URL + "/resume-shrihari.pdf?v=2";
+
   link.download = "resume-shrihari.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
+
 
 
   return (
