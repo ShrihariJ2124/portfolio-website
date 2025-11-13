@@ -7,24 +7,23 @@ const Projects = () => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  // Helper function to get project image path
-  // Upload your project screenshots to public/images/projects/ with naming: projectname.jpg
-  // Example: "Content Generator Platform" -> "content-generator-platform.jpg"
-  const getProjectImage = (projectTitle) => {
-    // Convert title to lowercase, replace spaces with hyphens, remove special characters
-    const imageName = projectTitle
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, '');
-    return `/images/projects/${imageName}.jpg`;
-  };
+  // Upload project screenshots to public/images/projects/ using the names listed below
+  // Using process.env.PUBLIC_URL to handle GitHub Pages subdirectory deployment
+  const getProjectImagePath = (fileName) => `${process.env.PUBLIC_URL || ''}/images/projects/${fileName}`;
 
+  // Expected image filenames (place them in public/images/projects):
+  // content-generator-platform.jpg
+  // ai-writing-assistant.jpg
+  // real-time-chat-application.jpg
+  // weather-forecasting-app.jpg
+  // github-user-finder.jpg
+  // portfolio-website.jpg
   const projects = [
     {
       title: "Content Generator Platform",
       description:
         "A full-stack AI-powered content generation platform enabling users to instantly generate, edit, and manage written content. Integrated secure authentication, payment gateway, and user dashboards for seamless user experience.",
-      image: getProjectImage("Content Generator Platform"),
+      imageFileName: "content-generator-platform.jpg",
       tech: ["React.js", "Node.js", "MongoDB", "OpenAI API", "Stripe", "Tailwind CSS"],
       github: "https://github.com/",
       demo: "https://demo.com/",
@@ -33,7 +32,7 @@ const Projects = () => {
       title: "AI Writing Assistant",
       description:
         "An AI-driven writing tool that performs grammar correction, rephrasing, and spell checking using OpenAI's GPT API. Integrated JWT authentication and multi-login support via email, Google, and phone.",
-      image: getProjectImage("AI Writing Assistant"),
+      imageFileName: "ai-writing-assistant.jpg",
       tech: ["React", "Node.js", "OpenAI API", "JWT", "Tailwind CSS"],
       github: "https://github.com/",
       demo: "https://demo.com/",
@@ -42,7 +41,7 @@ const Projects = () => {
       title: "Real-Time Chat Application",
       description:
         "A responsive, real-time chat platform enabling instant communication using Socket.io. Includes live typing indicators, user authentication, and online/offline status for multiple concurrent users.",
-      image: getProjectImage("Real-Time Chat Application"),
+      imageFileName: "real-time-chat-application.jpg",
       tech: ["React", "Node.js", "Socket.io", "Express.js", "MongoDB"],
       github: "https://github.com/",
       demo: "https://demo.com/",
@@ -51,7 +50,7 @@ const Projects = () => {
       title: "Weather Forecasting App",
       description:
         "A clean and intuitive weather forecasting application that fetches real-time data using the OpenWeather API. Includes responsive UI, search by city, and dynamic weather icons for better UX.",
-      image: getProjectImage("Weather Forecasting App"),
+      imageFileName: "weather-forecasting-app.jpg",
       tech: ["HTML", "CSS", "JavaScript", "OpenWeather API"],
       github: "https://github.com/",
       demo: "https://demo.com/",
@@ -60,7 +59,7 @@ const Projects = () => {
       title: "GitHub User Finder",
       description:
         "A web application to search GitHub users and fetch profile data using the GitHub REST API. Features search suggestions and clean UI built with vanilla JavaScript and Fetch API.",
-      image: getProjectImage("GitHub User Finder"),
+      imageFileName: "github-user-finder.jpg",
       tech: ["HTML", "CSS", "JavaScript", "Fetch API", "GitHub REST API"],
       github: "https://github.com/",
       demo: "https://demo.com/",
@@ -69,7 +68,7 @@ const Projects = () => {
       title: "Portfolio Website",
       description:
         "A modern, responsive portfolio website showcasing projects, skills, and experience. Built with React, Tailwind CSS, and Framer Motion, featuring smooth animations and dark mode support.",
-      image: getProjectImage("Portfolio Website"),
+      imageFileName: "portfolio-website.jpg",
       tech: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
       github: "https://github.com/",
       demo: "https://demo.com/",
@@ -94,8 +93,10 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
+          {projects.map((project, index) => {
+            const imageSrc = getProjectImagePath(project.imageFileName);
+            return (
+              <div
               key={index}
               className="group bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-105"
               data-aos="fade-up"
@@ -104,7 +105,7 @@ const Projects = () => {
               {/* Image */}
               <div className="relative h-56 overflow-hidden">
                 <img
-                  src={project.image}
+                  src={imageSrc}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   onError={(e) => {
@@ -169,7 +170,8 @@ const Projects = () => {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* GitHub CTA */}

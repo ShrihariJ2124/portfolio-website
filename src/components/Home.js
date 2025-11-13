@@ -5,7 +5,7 @@ import 'aos/dist/aos.css';
 const Home = () => {
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = '/resume.pdf';
+    link.href = `${process.env.PUBLIC_URL || ''}/resume.pdf`;
     link.download = 'resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -144,7 +144,7 @@ const Home = () => {
             <div className="relative">
               <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-2xl shadow-blue-500/20 float-animation">
                 <img
-                  src="/profile.jpg"
+                  src={`${process.env.PUBLIC_URL || ''}/profile.jpg`}
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />

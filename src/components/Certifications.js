@@ -3,12 +3,15 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Certifications = () => {
+  // Helper function to get image path with PUBLIC_URL for GitHub Pages deployment
+  const getImagePath = (imagePath) => `${process.env.PUBLIC_URL || ''}${imagePath}`;
+
   const certifications = [
     {
       title: "Namaste JavaScript",
       organization: "NamasteDev.com",
       date: "2024",
-      image: "/images/certificates/namaste-javascript.jpg",
+      image: getImagePath("/images/certificates/namaste-javascript.jpg"),
       credentialId: "ND-JS-001",
       description:
         "Completed an in-depth JavaScript course covering core programming concepts, advanced ES6+ features, and deep insights into how JS works under the hood — taught by Akshay Saini.",
@@ -21,7 +24,7 @@ const Certifications = () => {
       title: "Namaste React",
       organization: "NamasteDev.com",
       date: "2024",
-      image: "/images/certificates/namaste-react.jpg",
+      image: getImagePath("/images/certificates/namaste-react.jpg"),
       credentialId: "ND-REACT-002",
       description:
         "Comprehensive React course focusing on modern component architecture, hooks, context API, and performance optimization for production-ready applications.",
@@ -34,7 +37,7 @@ const Certifications = () => {
       title: "Advanced DSA Live Training Program (C++)",
       organization: "GeeksforGeeks",
       date: "2023",
-      image: "/images/certificates/gfg-dsa-cpp.jpg",
+      image: getImagePath("/images/certificates/gfg-dsa-cpp.jpg"),
       credentialId: "GFG-DSA-003",
       description:
         "Live advanced training on Data Structures and Algorithms using C++, focusing on problem-solving, optimization, and competitive programming techniques.",
@@ -47,7 +50,7 @@ const Certifications = () => {
       title: "Programming in Java",
       organization: "NPTEL (IIT Certification)",
       date: "2023",
-      image: "/images/certificates/nptel-java.jpg",
+      image: getImagePath("/images/certificates/nptel-java.jpg"),
       credentialId: "NPTEL-JAVA-004",
       description:
         "Successfully completed the NPTEL-certified Java Programming course under IIT faculty, demonstrating strong understanding of OOPs and backend concepts.",
@@ -61,7 +64,7 @@ const Certifications = () => {
         "International Conference on Micro, Nano, and Smart Systems (ISSS 2024)",
       organization: "ISSS & IISc Bengaluru",
       date: "July 2024",
-      image: "/images/certificates/isss-conference.jpg",
+      image: getImagePath("/images/certificates/isss-conference.jpg"),
       credentialId: "ISSS-2024",
       description:
         "Among the top 24 teams selected across India to present research at the prestigious ISSS International Conference on Micro, Nano, and Smart Systems held at IISc Bengaluru. Gained exposure to groundbreaking advancements in nano and smart technologies.",
