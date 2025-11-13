@@ -3,14 +3,15 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Home = () => {
-  const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href = `${process.env.PUBLIC_URL || ''}/resume.pdf`;
-    link.download = 'resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+const handleDownloadResume = () => {
+  const link = document.createElement("a");
+  link.href = process.env.PUBLIC_URL + "/resume-shrihari.pdf";
+  link.download = "resume-shrihari.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 
   return (
     <section
